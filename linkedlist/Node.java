@@ -1,4 +1,4 @@
-package com.google.interview.linkedlist;
+package linkedlist;
 
 /**
  * Created by nachiketlondhe on 1/7/17.
