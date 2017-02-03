@@ -1,6 +1,5 @@
-package com.google.interview.leetcode;
+package leetCode;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

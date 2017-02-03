@@ -1,4 +1,4 @@
-package com.google.interview.leetcode;
+package leetCode;
 
 /**
  * Created by nachiketlondhe on 1/12/17.

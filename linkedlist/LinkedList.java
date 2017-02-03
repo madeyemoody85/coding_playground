@@ -1,4 +1,4 @@
-package com.google.interview.linkedlist;
+package linkedlist;
 
 import java.util.Stack;
 
