@@ -31,15 +31,15 @@ public class LinkedList {
     public void addNode(int value) {
         if(head == null) {
             head = new Node(value);
-        } else {
-            Node temp = head;
-            while (temp.next != null) {
-                temp = temp.next;
-            }
-
-            Node newNode = new Node(value);
-            temp.next = newNode;
+            return;
         }
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        Node newNode = new Node(value);
+        temp.next = newNode;
     }
 
     public void printList(Node head) {
@@ -73,7 +73,7 @@ public class LinkedList {
         }
     }
 
-    public Node reverseList() {
+    public Node reverseListOld() {
         if(head == null || head.next == null) {
             return head;
         }
@@ -87,6 +87,28 @@ public class LinkedList {
             prev = current;
             current = next;
             if(current != null) {
+                next = current.next;
+            }
+        }
+
+        head = prev;
+        return head;
+    }
+
+    public Node reverseList() {
+        if (head == null || head.next == null) {
+            System.out.println("Possibly empty list...");
+        }
+
+        Node prev = null;
+        Node current = head;
+        Node next = head.next;
+
+        while (current != null) {
+            current.next = prev;
+            prev = current;
+            current = next;
+            if (current != null ) {
                 next = current.next;
             }
         }
