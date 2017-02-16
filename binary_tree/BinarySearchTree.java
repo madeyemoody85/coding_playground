@@ -66,16 +66,10 @@ public class BinarySearchTree {
             System.out.print(i + " ");
         }*/
 
-        tree.addValueToTree(5);
-        tree.addValueToTree(2);
-        tree.addValueToTree(12);
-        tree.addValueToTree(-4);
         tree.addValueToTree(3);
-        tree.addValueToTree(9);
-        tree.addValueToTree(21);
-        tree.addValueToTree(7);
-        tree.addValueToTree(19);
-        tree.addValueToTree(25);
+        tree.addValueToTree(1);
+        tree.addValueToTree(4);
+        tree.addValueToTree(2);
 
         tree.delete(root, 3);
     }
@@ -113,60 +107,86 @@ public class BinarySearchTree {
         }
     }
 
-    public void delete(Node root, int value) {
-        if (root == null) {
-            return;
-        } else {
-            Node temp = root;
-            Node parent = null;
-            while (temp != null) {
-                if (value < temp.data) {
-                    parent = temp;
-                    temp = temp.left;
-                } else if (value > temp.data) {
-                    parent = temp;
-                    temp = temp.right;
-                } else {
-                    if (temp.left == null && temp.right == null) {
-                        if (parent.left == temp) {
-                            parent.left = null;
-                        } else {
-                            parent.right = null;
-                        }
-                    } else if (temp.left == null && temp.right != null) {
-                        parent.right = temp.right;
-                    } else if (temp.right == null && temp.left != null) {
-                        parent.left = temp.left;
-                    } else {
-                        Node minNode = findMinInMaxTreeAndDelete(temp.right);
-                        if (temp == this.root) {
-                            this.root = minNode;
-                        } else if (parent.left == temp) {
-                            parent.left = minNode;
-                        } else {
-                            parent.right = minNode;
-                        }
-                        minNode.left = temp.left;
-                        minNode.right = temp.right;
-                    }
-                    break;
-                }
+    public Node delete(Node root, int val) {
+        if (root == null) return null;
+
+        Node parent = null;
+        Node temp = root;
+        Node child;
+
+        boolean is_left = true;
+
+        // find the node
+        while (temp != null){
+            if (val == temp.data) {
+                break;
+            } else if (val < temp.data) {
+                parent = temp;
+                is_left = true;
+                temp = temp.left;
+            } else {
+                parent = temp;
+                is_left = false;
+                temp = temp.right;
             }
         }
-    }
 
-    public Node findMinInMaxTreeAndDelete(Node node) {
-        if (node == null) {
-            throw new IllegalStateException("This is weird");
+        if (temp == null) {
+            return root;
         }
-        Node temp = node;
-        Node parent = null;
-        while (temp != null && temp.left != null) {
-            parent = temp;
-            temp = temp.left;
+
+        // case 1: this is a leaf node
+        if (temp.left == null && temp.right == null) {
+            if (parent == null) {
+                return null;
+            } else {
+                if (is_left) {
+                    parent.left = null;
+                } else {
+                    parent.right = null;
+                }
+            }
+
+        } else if (temp.left == null || temp.right == null) {
+            // case 2: this has exactly only one child
+
+            if (temp.left != null) {
+                child = temp.left;
+            } else {
+                child = temp.right;
+            }
+
+            if (parent == null) {
+                root = child;
+            } else {
+                if (is_left) {
+                    parent.left = child;
+                } else {
+                    parent.right = child;
+                }
+            }
+        } else {
+            // case 3: this one has two children
+            Node parent_repl = temp;
+            Node replacement = temp.left;
+
+            is_left = true;
+            while (replacement.right != null) {
+                parent_repl = replacement;
+                replacement = replacement.right;
+                is_left = false;
+            }
+
+            temp.data = replacement.data;
+
+            if (is_left) {
+                temp.left = replacement.left;
+            } else {
+                parent_repl.right = replacement.left;
+            }
         }
-        parent.left = null;
-        return temp;
+
+        return root;
     }
 
     public void printTree() {
