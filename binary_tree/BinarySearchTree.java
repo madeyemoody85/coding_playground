@@ -30,7 +30,7 @@ public class BinarySearchTree {
 
         System.out.println("Creating tree: ");
 
-        int[] values = {2, 3, 1};
+        /*int[] values = {2, 3, 1};
 
         //Add the values to the tree
         for(int i: values) {
@@ -64,8 +64,20 @@ public class BinarySearchTree {
 
         for(Integer i: postOrderTraversal) {
             System.out.print(i + " ");
-        }
+        }*/
 
+        tree.addValueToTree(5);
+        tree.addValueToTree(2);
+        tree.addValueToTree(12);
+        tree.addValueToTree(-4);
+        tree.addValueToTree(3);
+        tree.addValueToTree(9);
+        tree.addValueToTree(21);
+        tree.addValueToTree(7);
+        tree.addValueToTree(19);
+        tree.addValueToTree(25);
+
+        tree.delete(root, 3);
     }
 
     public void addValueToTree(int data) {
@@ -78,9 +90,8 @@ public class BinarySearchTree {
 
         Node temp = root;
 
-        while(true) {
+        while(temp != null) {
             if (data < temp.data) {
-                //Go left
                 if (temp.left == null) {
                     temp.left = new Node(data);
                     break;
@@ -100,6 +111,62 @@ public class BinarySearchTree {
                 break;
             }
         }
+    }
+
+    public void delete(Node root, int value) {
+        if (root == null) {
+            return;
+        } else {
+            Node temp = root;
+            Node parent = null;
+            while (temp != null) {
+                if (value < temp.data) {
+                    parent = temp;
+                    temp = temp.left;
+                } else if (value > temp.data) {
+                    parent = temp;
+                    temp = temp.right;
+                } else {
+                    if (temp.left == null && temp.right == null) {
+                        if (parent.left == temp) {
+                            parent.left = null;
+                        } else {
+                            parent.right = null;
+                        }
+                    } else if (temp.left == null && temp.right != null) {
+                        parent.right = temp.right;
+                    } else if (temp.right == null && temp.left != null) {
+                        parent.left = temp.left;
+                    } else {
+                        Node minNode = findMinInMaxTreeAndDelete(temp.right);
+                        if (temp == this.root) {
+                            this.root = minNode;
+                        } else if (parent.left == temp) {
+                            parent.left = minNode;
+                        } else {
+                            parent.right = minNode;
+                        }
+                        minNode.left = temp.left;
+                        minNode.right = temp.right;
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    public Node findMinInMaxTreeAndDelete(Node node) {
+        if (node == null) {
+            throw new IllegalStateException("This is weird");
+        }
+        Node temp = node;
+        Node parent = null;
+        while (temp != null && temp.left != null) {
+            parent = temp;
+            temp = temp.left;
+        }
+        parent.left = null;
+        return temp;
     }
 
     public void printTree() {
