@@ -17,7 +17,7 @@ public class LinkedList {
             list.addNode(i);
         }
 
-        list.reverseList();
+        /*list.reverseList();
         list.printList(list.getHead());
         list.reverseList();
         list.printList(list.getHead());
@@ -25,7 +25,10 @@ public class LinkedList {
         list.deleteNode(6);
         list.printList(list.getHead());
         list.deleteNode(0);
-        list.printList(list.getHead());
+        list.printList(list.getHead());*/
+
+        Node test = list.reverseListRecurse(head);
+        list.printList(test);
     }
 
     public void addNode(int value) {
@@ -73,28 +76,6 @@ public class LinkedList {
         }
     }
 
-    public Node reverseListOld() {
-        if(head == null || head.next == null) {
-            return head;
-        }
-
-        Node prev = null;
-        Node current = head;
-        Node next = head.next;
-
-        while(current != null) {
-            current.next = prev;
-            prev = current;
-            current = next;
-            if(current != null) {
-                next = current.next;
-            }
-        }
-
-        head = prev;
-        return head;
-    }
-
     public Node reverseList() {
         if (head == null || head.next == null) {
             System.out.println("Possibly empty list...");
@@ -138,7 +119,11 @@ public class LinkedList {
         System.out.println();
     }
 
-    public Node getHead() {
-        return head;
+    /*
+        1 --> 2 --> 3
+     */
+    public Node reverseListRecurse(Node root) {
+        Node someNode = reverseListRecurse(root);
+        return root;
     }
 }
