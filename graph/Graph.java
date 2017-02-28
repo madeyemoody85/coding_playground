@@ -52,7 +52,7 @@ public class Graph {
         }
     }
 
-    public void bfs(char root) {
+    public void bfsWrong(char root) {
         Queue<Character> queue = new LinkedList<>();
         Set<Character> visited = new HashSet<>();
         queue.add(root);
@@ -66,6 +66,23 @@ public class Graph {
                     if (!visited.contains(c)) {
                         queue.add(c);
                     }
+                }
+            }
+        }
+    }
+
+    public void bfs(char root) {
+        Queue<Character> queue = new LinkedList<>();
+        Set<Character> visited = new HashSet<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Character top = queue.peek();
+            queue.poll();
+            if (!visited.contains(top)) {
+                System.out.print(top + " ");
+                visited.add(top);
+                for (Character c : adjacencyList.get(top)) {
+                    queue.add(c);
                 }
             }
         }

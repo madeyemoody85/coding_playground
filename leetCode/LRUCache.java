@@ -1,5 +1,8 @@
 package leetCode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Some simple implementation of the LRUCache
  */
@@ -72,6 +75,15 @@ public class LRUCache {
     }
 
     /**
+     * Remove node from tail
+     */
+    public LRUNode removeFromTail() {
+        LRUNode returnNode = this.tail.prev;
+        this.removeNode(returnNode);
+        return returnNode;
+    }
+
+    /**
      * Set method for the LRU cache
      */
     public void set(int key, int value) {
@@ -81,7 +93,7 @@ public class LRUCache {
         if (node == null) {
 
             // create the node
-            LRUNode temp = new LRUNode(key, value);
+            LRUNode temp = new LRUNode();
             temp.key = key;
             temp.value = value;
 
@@ -89,7 +101,7 @@ public class LRUCache {
             this.cache.put(key, temp);
 
             // now add the node to the doubly linked list
-            this.addNode(temp);
+            this.addToHead(temp);
 
             this.count++;
 
