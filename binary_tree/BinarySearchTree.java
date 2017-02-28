@@ -112,7 +112,6 @@ public class BinarySearchTree {
 
         Node parent = null;
         Node temp = root;
-        Node child;
 
         boolean is_left = true;
 
@@ -135,6 +134,8 @@ public class BinarySearchTree {
             return root;
         }
 
+        // temp is the node you have found
+
         // case 1: this is a leaf node
         if (temp.left == null && temp.right == null) {
             if (parent == null) {
@@ -149,6 +150,7 @@ public class BinarySearchTree {
 
         } else if (temp.left == null || temp.right == null) {
             // case 2: this has exactly only one child
+            Node child;
 
             if (temp.left != null) {
                 child = temp.left;
