@@ -169,6 +169,7 @@ public class BinarySearchTree {
             }
         } else {
             // case 3: this one has two children
+            // solve this on the board
             Node parent_repl = temp;
             Node replacement = temp.left;
 
