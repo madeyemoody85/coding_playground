@@ -11,8 +11,8 @@ public class SortColors {
 
     public void sortColors2Pass(int[] nums) {
         int red = 0;
-        int white = 1;
-        int blue = 2;
+        int white = 0;
+        int blue = 0;
 
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) {
@@ -29,9 +29,5 @@ public class SortColors {
             else if (i < red + white) nums[i] = 1;
             else nums[i] = 2;
         }
-    }
-
-    public void sortColors1pass(int[] nums) {
-
     }
 }

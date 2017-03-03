@@ -79,6 +79,7 @@ public class LinkedList {
     public Node reverseList() {
         if (head == null || head.next == null) {
             System.out.println("Possibly empty list...");
+            return head;
         }
 
         Node prev = null;
