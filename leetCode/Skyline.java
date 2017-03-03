@@ -30,7 +30,6 @@ public class Skyline {
         List<int[]> heightMap = new ArrayList<>();
 
         // Add negative height at start and positive height at end
-        // TODO: Read about it
         for (int[] b: buildings) {
             heightMap.add(new int[]{b[0], -b[2]});
             heightMap.add(new int[]{b[1], b[2]});
@@ -41,7 +40,7 @@ public class Skyline {
            if (a[0] != b[0])
                return a[0] - b[0];
            // same start point different heights
-           return a[1] - b[0];
+           return a[1] - b[1];
         });
 
         // Use a maxHeap to store possible heights
