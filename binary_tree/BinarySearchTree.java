@@ -185,6 +185,7 @@ public class BinarySearchTree {
             if (is_left) {
                 temp.left = replacement.left;
             } else {
+                // In case you end up going to the right most node this value will null;
                 parent_repl.right = replacement.left;
             }
         }

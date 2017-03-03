@@ -25,21 +25,6 @@ public class ShortestWordDistance {
         System.out.println("Shortest word distance: " + shortestDistance);
     }
 
-    public int shortestDistance(String[] words, String word1, String word2) {
-        int shortestDistance = Integer.MAX_VALUE;
-        int index = -1;
-        for(int i = 0; i < words.length; i++) {
-            if (words[i] == word1 || words[i] == word2) {
-                if(index != -1 && !words[index].equals(words[i])) {
-                    shortestDistance = Math.min(shortestDistance, i - index);
-                }
-                index = i;
-            }
-        }
-
-        return shortestDistance;
-    }
-
     // fird the first position
     // find the second position
     // Once both positions are found find the minimum of shortest distance

@@ -56,7 +56,6 @@ public class LRUCache {
 
     /**
      * Remove method to remove the node from the list
-     * First time you are writing this code
      */
     public void removeNode(LRUNode node) {
         LRUNode prev = node.prev;
