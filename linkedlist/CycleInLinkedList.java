@@ -35,6 +35,38 @@ public class CycleInLinkedList {
         return false;
     }
 
+    class ListNode {
+        public int val;
+        public ListNode next;
+        ListNode(int x) { this.val = x; this.next = null; };
+    }
+
+    /**
+     * Given lined list return node where the cycle doesn't exist
+     *
+     * @param a list head
+     * @return node
+     */
+    public ListNode detectCycle(ListNode a) {
+        if (a == null) {
+            return null;
+        }
+
+        ListNode runner1 = a;
+        ListNode runner2 = a;
+
+        while (runner2.next != null) {
+            runner1 = runner1.next;
+            runner2 = runner2.next.next;
+
+            if (runner1 == runner2) {
+                return runner1;
+            }
+        }
+
+        return null;
+    }
+
     /**
      * given a linked list find the nth to the last node
      */
