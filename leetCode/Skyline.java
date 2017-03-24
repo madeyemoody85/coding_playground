@@ -69,3 +69,103 @@ public class Skyline {
         return skyline;
     }
 }
+
+/**
+Input: [4, 1, 2, 3, 5, 5] [4, 1, 3]
+        Longest Path: [1, 2, 3]
+        Output: 3
+
+        import java.util.PriorityQueue;
+
+public int findLengthOfLongestConseqPath(int[] input) {
+        if (input == null || input.length == 0) {
+        return 0;
+        }
+
+        int maxLength = 1;
+        int startIndex = 0;
+        PriorityQueue<Integer> queue = new PriorityQueue((a, b) -> (b - a));
+        for (int i = 1; i < input.length; i++) {
+        if ((input[i] - input[startIndex]) == 1) {
+        maxLength++;
+        startIndex = i;
+        } else {
+        queue.offer(maxLength);
+        startIndex = i;
+        maxLength = 1;
+        }
+        }
+
+        if (!queue.isEmpty()) {
+        return queue.peek();
+        }
+        return maxLength;
+        }
+
+
+        [4, 1, 2, 3]
+public int findLengthOfLongestConseqPath(int[] input) {
+        if (input == null || input.length == 0) {
+        return 0;
+        }
+
+        int maxLength = 1;
+        int startIndex = 0;
+        int newMaxLength = 1;
+        for (int i = 1; i < input.length; i++) {
+        if ((input[i] - input[startIndex]) == 1) {
+        newMaxLength++;
+        startIndex = i;
+        } else {
+        maxLength = Math.max(maxLength, newMaxLength);
+        startIndex = i;
+        newMaxLength = 1;
+        }
+        }
+
+        return Math.max(maxLength, newMaxLength);
+        }
+ **/
+
+/**
+ class Pramp {
+ public static void main(String[] args) {
+ String pramp = "Practice Makes Perfect";
+ System.out.println(pramp);
+ }
+
+ public int[] multiplyAllButThis(int[] arr) {
+ int[] productArr = new int[arr.length];
+
+ int product = 1;
+ for (int i = 0; i < arr.length-1; i++) {
+ productArr[i] *= product;
+ product *= arr[i];
+ }
+
+ product = 1;
+
+ for (int i = arr.length - 1; i >= 0 ; i--) {
+ productArr[i] *= product;
+ product *= arr[i];
+ }
+ }
+ }
+
+
+ productArr = [1, 1, 1, 1]
+
+ [1, 2, 3, 4]
+
+ -> [1, 1, 2, 6]
+
+
+
+ , 1*product=1*4*3 , 2*product=1*4 ,6*product=1]
+
+
+ [1, 1, 2, 6]
+
+ [1, 1, 6, 6]
+
+ 
