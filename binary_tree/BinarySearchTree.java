@@ -399,3 +399,92 @@ public class BinarySearchTree {
         return root;
     }
 }
+
+
+class Node {
+    int val;
+    Node left;
+    Node right;
+    public Node(int val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+    public int findLengthOfLongestConseqPath(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+
+        int maxLength = 1;
+        int newMaxLength = 1;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            Node temp = queue.poll();
+
+            if (temp.left != null )
+                queue.add (ltemp.lefT);
+            if (temp.right != null)
+                queue.add(temp.right);
+
+            while (temp != null) {
+                if (temp.left != null && temp.val - temp.left.val == 1) {
+                    temp = temp.left;
+                    newMaxLength++;
+                } else if (temp.right != null && temp.val - temp.right.val == 1) {
+                    temp = temp.right;
+
+                }
+            }
+
+        }
+
+        return Math.max(maxLength, newMaxLength);
+    }
+
+
+    public int findLengthOfLongestConseqPath(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+
+        int maxLength = 1;
+        int newMaxLength = 1;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            Node temp = queue.poll();
+
+            if (temp.left != null )
+                queue.add (ltemp.lefT);
+            if (temp.right != null)
+                queue.add(temp.right);
+
+            while (temp != null) {
+                if (temp.left != null && temp.val - temp.left.val == 1) {
+                    temp = temp.left;
+                    newMaxLength++;
+                } else if (temp.right != null && temp.val - temp.right.val == 1) {
+                    temp = temp.right;
+
+                }
+            }
+
+        }
+
+        return Math.max(maxLength, newMaxLength);
+    }
