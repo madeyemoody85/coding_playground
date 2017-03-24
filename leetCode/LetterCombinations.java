@@ -11,7 +11,7 @@ public class LetterCombinations {
     public static void main(String args[]) {
         LetterCombinations solution = new LetterCombinations();
 
-        List<String> possibleCombinations = solution.letterCombinations("5085429728");
+        List<String> possibleCombinations = solution.letterCombinations("345");
         System.out.println("All possible combinations: " + possibleCombinations.size());
     }
 

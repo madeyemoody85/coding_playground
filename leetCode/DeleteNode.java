@@ -15,7 +15,83 @@ public class DeleteNode {
             this.right = null;
         }
     }
-    public TreeNode deleteNode(TreeNode root, int val) {
+
+    public TreeNode deleteNode(TreeNode root, int  val) {
+        if (root == null) return null;
+
+        TreeNode parent = null;
+        TreeNode temp = root;
+
+        boolean isLeft = false;
+
+        // Find the node
+        while (temp != null) {
+            if (val == temp.val) {
+                break;
+            } else if ( val < temp.val) {
+                isLeft = true;
+                parent = temp;
+                temp = temp.left;
+            } else {
+                isLeft = false;
+                parent = temp;
+                temp = temp.right;
+            }
+        }
+
+        // In case we break of from while because of that
+
+        if (temp == null) {
+            return root;
+        }
+
+        if (temp.left == null && temp.right == null) {
+            if (isLeft) {
+                parent.left = null;
+            } else {
+                parent.right = null;
+            }
+        }  else if (temp.left == null || temp.right == null) {
+            TreeNode child = null;
+
+            if (temp.left != null) {
+                child = temp.left;
+            } else if (temp.right != null) {
+                child = temp.right;
+            }
+
+            if (isLeft) {
+                parent.left = child;
+            } else {
+                parent.right = child;
+            }
+        } else {
+            TreeNode parent_of_replacement = null;
+
+            // Go and find the max child in left tree
+            TreeNode replacement = temp.left;
+            isLeft = true;
+
+            while (replacement.right != null) {
+                parent_of_replacement = replacement;
+                replacement = replacement.right;
+                isLeft = false;
+            }
+
+            // Copy the value of replacement
+            temp.val = replacement.val;
+
+            if (isLeft) {
+                temp.left = replacement.left;
+            } else {
+                parent_of_replacement.right = replacement.left;
+            }
+        }
+
+        return root;
+    }
+
+    public TreeNode deleteNode2(TreeNode root, int val) {
         if (root == null) return null;
 
         TreeNode parent = null;

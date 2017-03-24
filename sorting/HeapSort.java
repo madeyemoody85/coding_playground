@@ -1,13 +1,14 @@
 package sorting;
 
 /**
+ * Heap Sort
  * Created by nachiketlondhe on 3/3/17.
  */
 public class HeapSort {
     // Driver program
     public static void main(String args[])
     {
-        int arr[] = {12, 11, 13, 5, 6, 7};
+        int arr[] = {7 ,6, 5, 4, 3, 2, 1};
         int n = arr.length;
 
         HeapSort ob = new HeapSort();

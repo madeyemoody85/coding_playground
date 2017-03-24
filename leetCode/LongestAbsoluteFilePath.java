@@ -17,26 +17,6 @@ public class LongestAbsoluteFilePath {
         );
     }
 
-    // Following solution uses stack 19 ms
-    public int lengthLongestPathV2(String input) {
-        Stack<Integer> stack = new Stack<>();
-        int result = 0;
-        int currentLength = 0;
-        for (String s : input.split("\n")) {
-            int currentLevel = s.lastIndexOf("\t") + 1;
-            while (stack.size() > currentLevel) {
-                currentLength -= stack.pop();
-            }
-            int length = s.replaceAll("\t","").length() + 1;
-            currentLength += length;
-            if (s.contains(".")) {
-                result = currentLength - 1 > result ? currentLength - 1 : result;
-            }
-            stack.add(length);
-        }
-        return result;
-    }
-
     // Using hashmap, keep track of max length at each level
     // later on add the max lengths together 14ms
     public int lengthLongestPath(String input) {

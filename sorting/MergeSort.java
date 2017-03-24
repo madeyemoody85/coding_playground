@@ -1,6 +1,7 @@
 package sorting;
 
 /**
+ * Merge sort
  * Created by nachiketlondhe on 2/25/17.
  */
 public class MergeSort {

@@ -107,6 +107,34 @@ public class BinarySearchTree {
         }
     }
 
+    /**
+     *      5
+     *   2      6
+     *
+     *   3
+     */
+    public void addValueRecursively(Node root , int a) {
+        if (root == null) {
+            root = new Node(a);
+            root.left = null;
+            root.right = null;
+        }
+
+        if (a < root.data) {
+            if (root.left == null) {
+                root.left = new Node(a);
+            } else {
+                addValueRecursively(root.left, a);
+            }
+        } else {
+            if (root.right == null ) {
+                root.right = new Node(a);
+            } else {
+                addValueRecursively(root.right, a);
+            }
+        }
+    }
+
     public Node delete(Node root, int val) {
         if (root == null) return null;
 
@@ -249,6 +277,27 @@ public class BinarySearchTree {
         return listToReturn;
     }
 
+    public ArrayList<Integer> inorder(Node root) {
+        // edge case
+        ArrayList<Integer> result = new ArrayList<>();
+
+        Stack<Node> stack = new Stack<>();
+        Node temp = root;
+
+        while ( !stack.isEmpty() && temp != null ) {
+            if (temp != null ) {
+                stack.push(temp.left);
+                temp = temp.left;
+            } else {
+                temp = stack.pop();
+                result.add(temp.data);
+                temp = temp.right;
+            }
+        }
+
+        return result;
+    }
+
     public ArrayList<Integer> preorderTraversal(Node root) {
 
         if(root == null){
@@ -283,6 +332,27 @@ public class BinarySearchTree {
         }
 
         return listToReturn;
+    }
+
+    public ArrayList<Integer> preorder(Node root) {
+        // edge case
+        ArrayList<Integer> result = new ArrayList<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            result.add(current.data);
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
+
+        return result;
     }
 
 
@@ -392,6 +462,50 @@ public class BinarySearchTree {
         }
 
         return listToReturn;
+    }
+
+    public ArrayList<Integer> postorder(Node root) {
+        // edge cases
+        ArrayList<Integer> result = new ArrayList<>();
+
+        Stack<Node> stack = new Stack<>();
+
+        stack.push(root);
+
+        Node prev = null;
+
+        while (!stack.isEmpty()) {
+
+            Node current = stack.peek();
+
+            // Go all the way to the left
+            if (prev == null || prev.left == current || prev.right == current) {
+                if (current.left != null) {
+                    stack.push(current.left);
+                } else if (current.right != null ) {
+                    stack.push(current.right);
+                } else {
+                    stack.pop();
+                    result.add(current.data);
+                }
+            // Go back from left
+            } else if (current.left == prev ) {
+                if (current.right != null) {
+                    stack.push(current.right);
+                } else {
+                    stack.pop();
+                    result.add(current.data);
+                }
+            // Go back from right
+            } else {
+                stack.pop();
+                result.add(current.data);
+            }
+
+            prev = current;
+        }
+
+        return result;
     }
 
 

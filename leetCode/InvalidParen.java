@@ -14,7 +14,7 @@ public class InvalidParen {
     }
 
     /**
-     * Aparently we are going to use BFS.
+     * Apparently we are going to use BFS.
      * First generate all the strings one level at a time if strings are valid add
      * the moment we found a valid string dont generate the possibilities
      *

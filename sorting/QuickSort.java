@@ -1,6 +1,7 @@
 package sorting;
 
 /**
+ * QUick sort
  * Created by nachiketlondhe on 2/25/17.
  */
 public class QuickSort {

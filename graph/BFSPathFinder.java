@@ -66,11 +66,14 @@ public class BFSPathFinder {
        3  1 0 1 0
      */
     public Node bfs(int[][] grid, int[] _start, int[] _end) {
+
+        // To keep track of the ship we have visited
         boolean[][] visited = new boolean[grid.length][grid[0].length];
 
         Queue<Node> queue = new LinkedList<>();
 
         Node start = new Node(_start[0], _start[1], null);
+
         queue.add(start);
 
         while (!queue.isEmpty()) {

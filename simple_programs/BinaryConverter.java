@@ -12,9 +12,9 @@ public class BinaryConverter {
 
         BinaryConverter solution = new BinaryConverter();
 
-        solution.binaryToDecimal(1000);
+        solution.binaryToDecimal(101);
 
-        solution.decimalToBinary(8);
+        solution.decimalToBinary(4);
     }
 
     /**

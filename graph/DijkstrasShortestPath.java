@@ -28,15 +28,15 @@ public class DijkstrasShortestPath {
     }
 
     public void dijkstras(Graph g, Vertex source) {
-        // Priority queue with minimum weight on top
-        Queue<Vertex> queue = new PriorityQueue<>((v1, v2) -> (v2.dist - v1.dist));
-
 //        for (Vertex v : Graph.vertices) {
 //            v.dist = Integer.MAX_VALUE;
 //            queue.add(v);
 //        }
 
         source.dist = 0;
+
+        // Priority queue with minimum weight on top
+        Queue<Vertex> queue = new PriorityQueue<>((v1, v2) -> (v1.dist - v2.dist));
 
         // map to keep track of parents of this node
         HashMap<Vertex, Vertex> parentMap = new HashMap<>();

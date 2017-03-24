@@ -9,7 +9,7 @@ public class Fibonnaci {
 
     public static void main(String args[]) {
 
-        System.out.println("Fibbonacci : " + fibonnacci(1000000000));
+        System.out.println("Fibbonacci : " + fibRec(4));
     }
 
     public static int fibonnacci(int n) {
@@ -28,5 +28,13 @@ public class Fibonnaci {
         }
 
         return returnValue;
+    }
+
+    public static int fibRec(int n) {
+        if (n <= 2) {
+            return 1;
+        }
+
+        return fibRec(n-1) + fibRec(n-2);
     }
 }
