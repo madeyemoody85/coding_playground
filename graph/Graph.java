@@ -76,8 +76,7 @@ public class Graph {
         Set<Character> visited = new HashSet<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            Character top = queue.peek();
-            queue.poll();
+            Character top = queue.poll();
             if (!visited.contains(top)) {
                 System.out.print(top + " ");
                 visited.add(top);

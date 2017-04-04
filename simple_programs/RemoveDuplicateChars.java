@@ -1,5 +1,7 @@
 package simple_programs;
 
+import java.util.HashMap;
+
 public class RemoveDuplicateChars {
     public static void main(String args[]) {
         String input = "aabggdhyrtttfsrfdhfjj";
@@ -7,6 +9,7 @@ public class RemoveDuplicateChars {
         char[] str = input.toCharArray();
 
         removeDuplicates(str);
+        HashMap<String, String> newMap;
     }
 
     /**

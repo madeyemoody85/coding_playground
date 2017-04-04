@@ -77,8 +77,7 @@ public class BFSPathFinder {
         queue.add(start);
 
         while (!queue.isEmpty()) {
-            Node temp = queue.peek();
-            queue.poll();
+            Node temp = queue.poll();
 
             // Reached the end node
             if (temp.x == _end[0] && temp.y == _end[1] ) {

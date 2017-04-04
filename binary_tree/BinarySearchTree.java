@@ -464,56 +464,12 @@ public class BinarySearchTree {
         return listToReturn;
     }
 
-    public ArrayList<Integer> postorder(Node root) {
-        // edge cases
-        ArrayList<Integer> result = new ArrayList<>();
-
-        Stack<Node> stack = new Stack<>();
-
-        stack.push(root);
-
-        Node prev = null;
-
-        while (!stack.isEmpty()) {
-
-            Node current = stack.peek();
-
-            // Go all the way to the left
-            if (prev == null || prev.left == current || prev.right == current) {
-                if (current.left != null) {
-                    stack.push(current.left);
-                } else if (current.right != null ) {
-                    stack.push(current.right);
-                } else {
-                    stack.pop();
-                    result.add(current.data);
-                }
-            // Go back from left
-            } else if (current.left == prev ) {
-                if (current.right != null) {
-                    stack.push(current.right);
-                } else {
-                    stack.pop();
-                    result.add(current.data);
-                }
-            // Go back from right
-            } else {
-                stack.pop();
-                result.add(current.data);
-            }
-
-            prev = current;
-        }
-
-        return result;
-    }
-
-
     public Node getRoot() {
         return root;
     }
 }
 
+/*
 
 class Node {
     int val;
@@ -602,3 +558,5 @@ class Node {
 
         return Math.max(maxLength, newMaxLength);
     }
+}
+package*/
